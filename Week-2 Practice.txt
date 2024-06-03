@@ -1,0 +1,85 @@
+#List Comprehensions
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    res = [[a, b, c] for a in range(x + 1) for b in range(y + 1) for c in range(z + 1) if a + b + c != n]
+print(res)
+#Find the Runner-up Score
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    st=set(arr)
+    st=sorted(st,reverse=True)
+    print(st[1])
+#Nested Lists
+if __name__ == '__main__':
+    students = []
+    for _ in range(int(input().strip())):
+        name = input().strip()
+        score = float(input().strip())
+        students.append([name, score])
+    scores = sorted(set([score for name, score in students]))
+    second_lowest_score = scores[1]
+    second_lowest_students = sorted([name for name, score in students if score == second_lowest_score])
+    for student in second_lowest_students:
+        print(student)
+#Finding the percentage
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    for i in student_marks:
+        if i == query_name:
+            avg_value = sum(student_marks[i])/len(student_marks[i])
+            print('%0.2f' % avg_value)
+#String Split and join
+def split_and_join(line):
+    return "-".join(line.split(" "))
+    # write your code here
+
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+#Alphabet rangoli
+def print_rangoli(size):
+    # your code goes here
+    smchr=97 
+    def print_line(i):
+        t=[]
+        for j in range(i,size): t.append( chr(smchr + j) )
+        t = list(reversed(t)) + t[1:]
+        centre, sides = "-".join(t), '--'*i
+        print(sides+centre+sides)
+        
+    for i in reversed(range(size)): print_line(i)
+    for i in range(1,size): print_line(i)
+
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
+#the Minion Game
+def minion_game(string):
+    n = len(string)
+    vowels = 0
+    cons = 0
+    for idx, c in enumerate(string):
+        num_substr = n - idx
+        if c in 'AEIOU':
+            vowels += num_substr
+        else:
+            cons += num_substr
+    if vowels > cons:
+        print(f'Kevin {vowels}')
+    elif cons > vowels:
+        print(f'Stuart {cons}')
+    else:
+        print('Draw')
+
+if __name__ == '__main__':
