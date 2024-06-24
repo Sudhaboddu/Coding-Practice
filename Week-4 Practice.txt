@@ -1,0 +1,82 @@
+##DefaultDict
+from collections import defaultdict
+
+n, m = list(map(int, input().split()))
+
+A = defaultdict(list)
+
+for i in range(n):
+    A[input()].append(str(i+1))
+    
+for i in range(m):
+    val = input()
+    if val in A.keys():
+        print(" ".join(A[val]))
+    else:
+        print('-1')
+##Collections.deque()
+from collections import deque
+def deque_operations(num_operations, operations):
+    d = deque()
+    for operation in operations:
+        op = operation[0]
+        if op == 'append':
+            d.append(operation[1])
+        elif op == 'appendleft':
+            d.appendleft(operation[1])
+        elif op == 'pop':
+            d.pop()
+        elif op == 'popleft':
+            d.popleft()
+    return " ".join(d)
+num_operations = int(input())
+operations = []
+for _ in range(num_operations):
+    operations.append(input().split())
+result = deque_operations(num_operations, operations)
+print(result)
+##Collections.orderedDict()
+from collections import OrderedDict
+def calculate_net_prices(num_items, items_list):
+    ordered_dict = OrderedDict()
+    for i in range(num_items):
+        item_name = ' '.join(items_list[i][:-1])
+        price = int(items_list[i][-1])
+        if item_name in ordered_dict:
+            ordered_dict[item_name] += price
+        else:
+            ordered_dict[item_name] = price
+    for item_name, net_price in ordered_dict.items():
+        print(item_name, net_price)
+num_items = int(input().strip())
+items_list = [input().strip().split() for _ in range(num_items)]
+calculate_net_prices(num_items, items_list)
+##Company logo
+def print_top_three_characters(s):
+    freq = {}
+    for char in s:
+        if char in freq:
+            freq[char] += 1
+        else:
+            freq[char] = 1
+    
+    sorted_chars = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
+    
+    for i in range(3):
+        if i < len(sorted_chars):
+            print(sorted_chars[i][0], sorted_chars[i][1])
+
+s = input().strip()
+print_top_three_characters(s)
+##Word Order
+from collections import OrderedDict
+n = int(input())
+ordered_input_dict = OrderedDict()
+for i in range(n):
+    val = input()
+    if val not in ordered_input_dict.keys():
+        ordered_input_dict[val] = 1
+    else:
+        ordered_input_dict[val] += 1 
+print(len(ordered_input_dict))
+print(' '.join(map(str, ordered_input_dict.values())))
