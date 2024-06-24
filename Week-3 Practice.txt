@@ -1,0 +1,119 @@
+##Lists
+if __name__ == '__main__':
+    N = int(input())
+    lst=[]
+    i: int= 0
+    while (i<N):
+        string = input()
+        string = list(string.split(" "))
+        if string[0] == "insert":
+            lst.insert(int(string[1]), int(string[2]))
+        elif string[0] == "print":
+            print(lst)
+        elif string[0] == "remove":
+            lst.remove(int(string[1]))
+        elif string[0] == "append":
+            lst.append(int(string[1]))
+        elif string[0] == "sort":
+            lst.sort()
+        elif string[0] == "pop":
+            lst.pop()
+        elif string[0] == "reverse":
+            lst.reverse()
+        i += 1
+##Tuples
+if __name__ == '__main__':
+    n = int(input())
+    l = map(int, input().split())
+    t=tuple(l)
+    print(hash(t))
+##Sets
+def average(array):
+    # your code goes here
+    l=set(arr)
+    sum=0
+    for i in l:
+        sum=sum+i
+    res=sum/len(l)
+    return res    
+##Set.add()
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+
+n=int(input())
+a=set()
+for i in range(n):
+    a.add(input())
+print(len(a))   
+##Set.discard(),.remove()&.pop()
+n = input()
+s = [val for val in input().split(" ")]
+s = s[::-1]
+s = set(s)
+N = int(input())
+
+for _ in range(N):
+    command = input().split(" ")
+    try:
+        if command[0] == "pop":
+            s.pop()
+        elif command[0] == "discard":
+            s.discard(command[1])
+        else:
+            s.remove(command[1])
+    except Exception as e:
+        continue
+print(sum(map(int, s)))
+##Set.intersection()
+n=int(input())
+a=set(map(int,input().split()))
+n1=int(input())
+b=set(map(int,input().split()))
+print(len(a.intersection(b)))
+##Set.symmetric_difference
+n=int(input())
+a=set(map(int,input().split()))
+n1=int(input())
+b=set(map(int,input().split()))
+print(len(a.symmetric_difference(b)))
+##Check Subset
+n=int(input())
+for i in range(n):
+    n1=int(input())
+    a=set(map(int,input().split()))
+    n2=int(input())
+    b=set(map(int,input().split()))
+    if a.issubset(b):
+        print("True")    
+    else:
+        print("False")    
+##Check superset
+s=set(map(int,input().split()))
+n=int(input())
+all_subsets = True
+for i in range(n):
+    a = set(map(int, input().split()))
+    if not s.issuperset(a):
+        all_subsets = False
+        break
+if all_subsets:
+    print("True")
+else:
+    print("False")
+##No Idea!
+n_and_m = input().split()
+n = n_and_m[0]
+m = n_and_m[1]
+arr = map(int, input().split())
+a = set(map(int, input().split()))
+b = set(map(int, input().split()))
+happiness = 0
+for i in arr:
+    if i in a:
+        happiness +=1
+    if i in b:
+        happiness-=1
+print(happiness)
